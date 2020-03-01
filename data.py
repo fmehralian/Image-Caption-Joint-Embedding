@@ -65,7 +65,7 @@ class Data:
     def __init__(self, create_dict=False):
 
         # Load captions as array of strings corresponding to an array of image feature vectors
-        self.load_dataset(name=config["dataset"])
+        self.load_dataset(name=config["dataset"].format(config["version"]))
         self.reset()
 
         if create_dict:
