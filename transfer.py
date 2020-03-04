@@ -27,7 +27,7 @@ if __name__ == "__main__":
 		print("[EPOCH]", epoch+1)
 
 		# Process batches
-		for caption, image_feature in data:
+		for caption, image_feature, contents in data:
 			pass			
 
 			# Pass data through model
