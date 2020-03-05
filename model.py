@@ -135,6 +135,6 @@ class Model(torch.nn.Module):
         return
 
     def load(self):
-        self.load_state_dict(torch.load(self.input_name + ".pkl"))
+        self.load_state_dict(torch.load(self.input_name + ".pkl", map_location=torch.device('cpu' if not config['cuda'] else 'cuda')))
         print("[LOADED]", self.input_name + ".pkl", "\n")
         return
