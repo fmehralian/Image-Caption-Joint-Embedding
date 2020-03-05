@@ -26,18 +26,18 @@ def image_to_text(contents, captions, images, npts=None, verbose=False):
         # Score
         ranks[index] = numpy.where(inds == index)[0][0]
 
-        # gen[index] = contents[inds[0]].split("_")[-1]
+        gen[index] = contents[inds[0]].decode("utf-8").split(",")[-1]
 
     # Compute metrics
     r1 = 100.0 * len(numpy.where(ranks < 1)[0]) / len(ranks)
     r5 = 100.0 * len(numpy.where(ranks < 5)[0]) / len(ranks)
     r10 = 100.0 * len(numpy.where(ranks < 10)[0]) / len(ranks)
     medr = numpy.floor(numpy.median(ranks)) + 1
-    # with open('err_im_to_text', 'w') as f:
-    #     f.write('>10:' + str([contents[i] for i in numpy.where(ranks > 10)[0]]) + "\n")
-    #     f.write('>5:' + str([contents[i] for i in numpy.where(ranks > 5)[0]]) + "\n")
-    #     f.write('>1:' + str([contents[i] for i in numpy.where(ranks > 1)[0]]) + "\n")
-    #     f.write(gen)
+    with open('err_im_to_text.txt', 'w') as f:
+        f.write('>10:' + str([contents[i] for i in numpy.where(ranks > 10)[0]]) + "\n")
+        f.write('>5:' + str([contents[i] for i in numpy.where(ranks > 5)[0]]) + "\n")
+        f.write('>1:' + str([contents[i] for i in numpy.where(ranks > 1)[0]]) + "\n")
+        f.write(gen)
 
     if verbose:
         print("		* Image to text scores: R@1: %.1f, R@5: %.1f, R@10: %.1f, Medr: %.1f" % (r1, r5, r10, medr))
