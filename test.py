@@ -1,5 +1,5 @@
 from data import Data
-from model import Model
+from iconClasses.model import Model
 
 def main():
 

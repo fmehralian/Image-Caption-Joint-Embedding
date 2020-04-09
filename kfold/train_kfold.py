@@ -1,6 +1,6 @@
 from data import Data
 from settings import config
-from model import Model
+from iconClasses.model import Model
 from loss import PairwiseRankingLoss as Loss
 from optimizer import Optimizer
 

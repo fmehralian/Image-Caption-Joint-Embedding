@@ -1,10 +1,7 @@
 import torch
 import torch.nn.functional as F
 from settings import config
-import numpy
-import evaluate
-from collections import defaultdict
-import time
+from iconClasses import evaluate
 
 
 class Model(torch.nn.Module):
